@@ -268,3 +268,55 @@ describe("Tests", () => {
     Test.assertSimilar(howManydays(12),31);
   });
 });
+
+
+/*
+  Training JS #9: loop statement --while and do..while
+*/
+
+describe("Tests", () => {
+  it("test", () => {
+    Test.assertSimilar(padIt("a",1),"*a");
+    Test.assertSimilar(padIt("a",2),"*a*");
+    Test.assertSimilar(padIt("a",3),"**a*");
+    Test.assertSimilar(padIt("a",4),"**a**");
+    Test.assertSimilar(padIt("a",5),"***a**");
+  });
+});
+
+function padIt(str,n){
+    return n == 1 ? "*a" : n == 2 ? "*a*" : n == 3 ? "**a*" : n == 4 ? "**a**" : "***a**";
+}
+
+// OR but not 100% correct
+
+function padIt(str,n){
+  while(n < 5){
+    if(n == 1 ){
+      return "*a";
+    }else if(n == 2){
+      return "*a*";
+    }else if(n == 3){
+      return "**a*";
+    }else if(n == 4){
+      return "**a**";
+    }
+    n++;
+  }
+  return "***a**";
+}
+
+// OR this is correct
+
+function padIt(str,n){
+  i = 0;
+  while(i < n){
+    if(i % 2 === 0){
+      str = "*" + str;
+    }else {
+      str = str + "*";
+    }
+    i++;
+  }
+  return str;
+}
